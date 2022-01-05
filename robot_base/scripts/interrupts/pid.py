@@ -15,7 +15,6 @@ class PID:
         self.u = 0
         self.direct = 1
     def update(self,feedback_value):
-    
         #time differance
         self.current_time = time.time()
         delta_time = (self.current_time - self.prev_time)*10000
@@ -42,6 +41,7 @@ class PID:
         self.u = pwm
         if U<0 :
             self.direct = -1
+        self.prev_error = error
     
     def getSignal(self):
         return self.u

@@ -1,4 +1,3 @@
-#!usr/bin/env python
 import time
 import serial
 import RPi.GPIO as GPIO
@@ -6,7 +5,7 @@ from time import sleep
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(7, GPIO.OUT, initial=GPIO.HIGH)
+GPIO.setup(24, GPIO.OUT, initial=GPIO.HIGH)
 
 send = serial.Serial(
     port='/dev/serial0',
@@ -24,8 +23,3 @@ while True:
      send.write(str(x))
      print(x)
      time.sleep(1.5)
-
-
-
-
-
