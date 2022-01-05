@@ -46,14 +46,14 @@ def SetMotorLeft(vel):
       pwm = -int(duty_cycle * vel)
       if pwm > duty_cycle:
          pwm = duty_cycle
-      print(pwm)
+      print('PWMA = '+str(pwm))
       PWMA.ChangeDutyCycle(pwm)
       SetMotorMode("leftmotor", "backward")
     elif vel > 0:
       pwm = int(duty_cycle * vel)
       if pwm > duty_cycle:
          pwm = duty_cycle
-      print(pwm)
+      print('PWMA = '+str(pwm))
       PWMA.ChangeDutyCycle(pwm)
       SetMotorMode("leftmotor", "forward")
 
@@ -64,49 +64,50 @@ def SetMotorRight(vel):
       pwm = -int(duty_cycle * vel)
       if pwm > duty_cycle:
          pwm = duty_cycle
-      print(pwm)
+      print('PWMB = '+str(pwm))
       PWMB.ChangeDutyCycle(pwm)
       SetMotorMode("rightmotor", "backward")
     elif vel > 0:
       pwm = int(duty_cycle * vel)
       if pwm > duty_cycle:
          pwm = duty_cycle
-      print(pwm)
+      print('PWMB = '+str(pwm))
       PWMB.ChangeDutyCycle(pwm)
       SetMotorMode("rightmotor", "forward")
 
-def SetMotorMode(motor,direct): 
+def SetMotorMode(motor,direct):
+    print('setMotorMode '+ motor +' '+ direct) 
     if motor == 'leftmotor':
         if direct == 'backward' :
             print('leftmotor backward')
             GPIO.output(IN1,GPIO.HIGH)
             GPIO.output(IN2,GPIO.LOW)
-    elif motor == 'leftmotor':
-        if direct == 'forward' :
+        elif direct == 'forward' :
             print('leftmotor forward')
             GPIO.output(IN1,GPIO.LOW)
             GPIO.output(IN2,GPIO.HIGH)
-    elif motor == 'rightmotor':
+    if motor == 'rightmotor':
         if direct == 'backward' :
             print('rightmotor  backward')
             GPIO.output(IN3,GPIO.HIGH)
             GPIO.output(IN4,GPIO.LOW)
-    elif motor == 'rightmotor':
-        if direct == 'forward' :
+   
+        elif direct == 'forward' :
             print('rightmotor  forward')
             GPIO.output(IN3,GPIO.LOW)
             GPIO.output(IN4,GPIO.HIGH)
-    else:
-        GPIO.output(IN1,GPIO.LOW)
-        GPIO.output(IN2,GPIO.LOW)
-        GPIO.output(IN3,GPIO.LOW)
-        GPIO.output(IN4,GPIO.LOW)
+    #else:
+     #   GPIO.output(IN1,GPIO.LOW)
+      #  GPIO.output(IN2,GPIO.LOW)
+       # GPIO.output(IN3,GPIO.LOW)
+        #GPIO.output(IN4,GPIO.LOW)
 def callback(twist):
     left_speed = twist.linear.x - twist.angular.z * differential 
     right_speed = twist.linear.x + twist.angular.z * differential 
     print('left_speed = '+str(left_speed)+' right_speed = '+str(right_speed))
     SetMotorLeft(left_speed)
     SetMotorRight(right_speed)
+
 if __name__ == '__main__':
     print ("Starting motor node")
     rospy.init_node('motors')
