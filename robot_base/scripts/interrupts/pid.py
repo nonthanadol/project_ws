@@ -11,7 +11,7 @@ class PID:
         self.PTerm = 0.0
         self.ITerm = 0.0
         self.DTerm = 0.0
-        self.prev_time = self.current_time
+        self.prev_time = 0
         self.u = 0
         self.direct = 1
     def update(self,feedback_value):
