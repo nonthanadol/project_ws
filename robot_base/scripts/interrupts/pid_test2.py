@@ -64,7 +64,7 @@ def setmotor(pwm,direct):
 while True:
     #### Calculate ####
     current_time = time.time()
-    delta_time = (current_time - prev_time)/1000000
+    delta_time = current_time - prev_time
     prev_time = current_time
 
     error = SetPoint - feedback_value
@@ -87,8 +87,11 @@ while True:
         direct = -1
 
     prev_error = error
-    print(error)
-    print(pwm)
-    print(U)
+    print('dt ='+str(delta_time))
+    print('error = '+str(error))
+    print('U = ' + str(U))
+    print('P = '+ str(PTerm))
+    print('I = '+ str(ITerm))
+    print('D = '+ str(DTerm))
     setmotor(pwm,direct)
 

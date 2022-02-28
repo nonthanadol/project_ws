@@ -17,7 +17,7 @@ class PID:
     def update(self,feedback_value):
         #time differance
         self.current_time = time.time()
-        delta_time = (self.current_time - self.prev_time)*10000
+        delta_time = (self.current_time - self.prev_time)
         #print(delta_time)
         self.prev_time = self.current_time
         
@@ -48,6 +48,9 @@ class PID:
     
     def getdirect(self):
         return self.direct
+
+    #def getPrevError(self):
+    #    return self.prev_error
 
     def getSP(self):
         return self.SetPoint

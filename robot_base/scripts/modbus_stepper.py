@@ -27,7 +27,7 @@ while 1:
             readledstatus1 = instrument1.read_register(1, 0)  # Registernumber, number of decimals
             print(readledstatus1)
             
-            time.sleep(1)
+            time.sleep(2)
 
 
         except :
@@ -50,7 +50,7 @@ while 1:
             readledstatus2 = instrument2.read_register(2, 0)  # Registernumber, number of decimals
             print(readledstatus2)
             
-            time.sleep(5)
+            time.sleep(2)
 
         except :
             print("error usb 2 ------------------------------")

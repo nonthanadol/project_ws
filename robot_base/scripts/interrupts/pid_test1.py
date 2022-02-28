@@ -38,7 +38,7 @@ def valueChanged(value, direction):
     print("* New value: {}, Direction: {}".format(value, direction))
 
 e1 = Encoder(12, 20,valueChanged)
-pid_m1 = PID(1,0.001,0.01,2000)
+pid_m1 = PID(1,0.1,0.01,2000)
 
 try:
     while True:
@@ -48,6 +48,7 @@ try:
       print(pid_m1.getPTerm())
       print(pid_m1.getITerm())
       print(pid_m1.getDTerm())
+      #print(pid_m1.getprev_error())
 
       PWMB.ChangeDutyCycle(pid_m1.getSignal())
       #PWMB.ChangeDutyCycle(100)
@@ -60,5 +61,8 @@ try:
          GPIO.output(IN4,GPIO.LOW)
 except Exception:
     pass
+    #PWMB.ChangeDutyCycle(0)
+    #GPIO.output(IN3,GPIO.LOW)
+    #GPIO.output(IN4,GPIO.LOW)
 
 GPIO.cleanup()
