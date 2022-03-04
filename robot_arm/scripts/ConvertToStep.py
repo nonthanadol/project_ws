@@ -13,15 +13,17 @@ total_step = ArmJointState()
 stepsPerRevolution = [32800,18000,72000,3280,14400,0] # pluse stepper per Rev output
 
 global joint_status
-joint_status = 1
+joint_status = 0
+
+global count 
+count = 0
+
 #cur_angle
 #joint_step[6];
 prev_angle = [0,0,0,0,0,0] 
 init_angle = [0,0,0,0,0,0]
 #total_steps = [0,0,0,0,0,0]
 
-global count 
-count = 0
 
 def cmd_cb(cmd_arm):
     global count
@@ -51,7 +53,7 @@ def cmd_cb(cmd_arm):
     arm_steps.position5 = int((cmd_arm.position[4]-prev_angle[4])*stepsPerRevolution[4]/(2*math.pi))
     arm_steps.position6 = int((cmd_arm.position[5]-prev_angle[5])*stepsPerRevolution[5]/(2*math.pi))
     
-    rospy.loginfo(' test arm_steps.position1 = ' + str(arm_steps.position1))
+    rospy.loginfo(' arm_steps.position1 = ' + str(arm_steps.position1))
 
     if(count != 0 ):
         prev_angle[0] = cmd_arm.position[0];
@@ -67,12 +69,12 @@ def cmd_cb(cmd_arm):
     total_step.position4 += arm_steps.position4;
     total_step.position5 += arm_steps.position5;
     
-    rospy.loginfo(' test total_step.position1 = ' + str(total_step.position1))
+    rospy.loginfo('  total_step.position1 = ' + str(total_step.position1))
 
     joint_status = 1
     count=1
-    print('joint_status = '+str(joint_status))
-    print('count= '+str(count))
+    print('joint_status cmd = '+str(joint_status))
+    print('count cmd = '+str(count))
 
 if __name__ == '__main__':
     rospy.init_node('ConvertToStep')
@@ -83,10 +85,15 @@ if __name__ == '__main__':
     
     rate = rospy.Rate(10)
     
+    print('joint_status main = '+str(joint_status))
+    print('count main = '+str(count))
+
     while not rospy.is_shutdown():
         print("while ")
 
-        if(count ==1):
+        if(joint_status ==1):
+            print('joint_status if while = '+str(joint_status))
+            print('count if while = '+str(count))
             print('joint_status==1')
             joint_status = 0
             pub.publish(total_step)
@@ -94,4 +101,4 @@ if __name__ == '__main__':
             rospy.loginfo('Published to /Joint_Steps')
         #rospy.spin()
         rate.sleep()
-   # rospy.spin()
+    rospy.spin()
