@@ -34,61 +34,61 @@ if __name__ == '__main__':
         char = getch()
         
         #Joint1
-        if(char == 'w'):
-            joint_state.position[0] = joint_state.position[0] + 1
+        if(char == 'q'):
+            joint_state.position[0] = joint_state.position[0] + 20
             # print('joint_state.position[0] :: '+str(joint_state.position[0]))
             printscreen()
-        elif(char == 's'):
-            joint_state.position[0] = joint_state.position[0] - 1
+        elif(char == 'a'):
+            joint_state.position[0] = joint_state.position[0] - 20
             #print('joint_state.position[0] :: '+str(joint_state.position[0]))
             printscreen()
         
         #Joint2
-        elif(char == 'e'):
+        elif(char == 'w'):
             joint_state.position[1] = joint_state.position[1] + 1
             # print('joint_state.position[1] :: '+str(joint_state.position[1]))
             printscreen()
-        elif(char == 'd'):
+        elif(char == 's'):
             joint_state.position[1] = joint_state.position[1] - 1
             # print('joint_state.position[1] :: '+str(joint_state.position[1]))
             printscreen()
         
         #Joint3
-        elif(char == 'r'):
+        elif(char == 'e'):
             joint_state.position[2] = joint_state.position[2] + 1
             # print('joint_state.position[2] :: '+str(joint_state.position[2]))
             printscreen()
-        elif(char == 'f'):
+        elif(char == 'd'):
             joint_state.position[2] = joint_state.position[2] - 1
             # print('joint_state.position[2] :: '+str(joint_state.position[2]))
             printscreen()
 
         #Joint4
-        elif(char == 't'):
+        elif(char == 'r'):
             joint_state.position[3] = joint_state.position[3] + 1
             # print('joint_state.position[3] :: '+str(joint_state.position[3]))
             printscreen()
-        elif(char == 'g'):
+        elif(char == 'f'):
             joint_state.position[3] = joint_state.position[3] - 1
             # print('joint_state.position[3] :: '+str(joint_state.position[3]))
             printscreen()
 
         #Joint5
-        elif(char == 'y'):
+        elif(char == 't'):
             joint_state.position[4] = joint_state.position[4] + 1
             # print('joint_state.position[4] :: '+str(joint_state.position[4]))
             printscreen()
-        elif(char == 'h'):
+        elif(char == 'g'):
             joint_state.position[4] = joint_state.position[4] - 1
             # print('joint_state.position[4] :: '+str(joint_state.position[4]))
             printscreen()
 
         #Joint6
-        elif(char == 'u'):
+        elif(char == 'y'):
             joint_state.position[5] = joint_state.position[5] + 1
             # print('joint_state.position[5] :: '+str(joint_state.position[5]))
             printscreen()
-        elif(char == 'j'):
+        elif(char == 'h'):
             joint_state.position[5] = joint_state.position[5] - 1
             # print('joint_state.position[5] :: '+str(joint_state.position[5]))
             printscreen()
