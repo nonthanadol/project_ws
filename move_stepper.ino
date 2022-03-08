@@ -44,7 +44,7 @@ void arm_cb(const robot_arm::ArmJointState& arm_steps){
 }
 
 ros::NodeHandle nh;
-ros::Subscriber<robot_arm::ArmJointState> arm_sub("Joint_Step ",arm_cb);
+ros::Subscriber<robot_arm::ArmJointState> arm_sub("Joint_Steps",arm_cb);
 
 
 void setup() {
@@ -79,7 +79,7 @@ void loop() {
     long positions[6];  // Array of desired stepper positions must be long
     positions[0] = joint_step[0]; // negated since the real robot rotates in the opposite direction as ROS
     positions[1] = joint_step[1]; 
-    positions[2] = -joint_step[2]; 
+    positions[2] = -joint_step[1]; 
     positions[3] = joint_step[3]; 
     positions[4] = joint_step[4];
     positions[5] = joint_step[5];

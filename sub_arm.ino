@@ -43,7 +43,7 @@ void arm_cb(const sensor_msgs::JointState& arm_steps){
 }
 
 ros::NodeHandle nh;
-ros::Subscriber<sensor_msgs::JointState> arm_sub("ArmJointState",arm_cb);
+ros::Subscriber<sensor_msgs::JointState> arm_sub("Ang",arm_cb);
 
 
 void setup() {
