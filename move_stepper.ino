@@ -24,6 +24,7 @@ int MaxSpeed_joint4 = 1000;
 int MaxSpeed_joint5 = 1000;
 int MaxSpeed_joint6 = 1000;
 
+
 MultiStepper steppers;
 
 int joint_step[6];
@@ -57,10 +58,11 @@ void setup() {
  
  joint1.setMaxSpeed(MaxSpeed_joint1);
  joint2.setMaxSpeed(MaxSpeed_joint2);
- joint3.setMaxSpeed(MaxSpeed_joint3);
- joint4.setMaxSpeed(MaxSpeed_joint4);
- joint5.setMaxSpeed(MaxSpeed_joint5);
- joint6.setMaxSpeed(MaxSpeed_joint6);
+ joint3.setMaxSpeed(MaxSpeed_joint2);
+ joint4.setMaxSpeed(MaxSpeed_joint3);
+ joint5.setMaxSpeed(MaxSpeed_joint4);
+ joint6.setMaxSpeed(MaxSpeed_joint5);
+ joint7.setMaxSpeed(MaxSpeed_joint6);
  
  steppers.addStepper(joint1);
  steppers.addStepper(joint2);
@@ -68,7 +70,7 @@ void setup() {
  steppers.addStepper(joint4);
  steppers.addStepper(joint5);
  steppers.addStepper(joint6);
- 
+ steppers.addStepper(joint7);
 }
 
 void loop() {
@@ -76,13 +78,14 @@ void loop() {
   { 
     Serial.print("joint_status == 1");
     
-    long positions[6];  // Array of desired stepper positions must be long
+    long positions[7];  // Array of desired stepper positions must be long
     positions[0] = joint_step[0]; // negated since the real robot rotates in the opposite direction as ROS
     positions[1] = joint_step[1]; 
     positions[2] = -joint_step[1]; 
-    positions[3] = joint_step[3]; 
-    positions[4] = joint_step[4];
-    positions[5] = joint_step[5];
+    positions[3] = joint_step[2]; 
+    positions[4] = joint_step[3];
+    positions[5] = joint_step[4];
+    positions[6] = joint_step[5];
  
     
     Serial.print("  positions[1] = ");
