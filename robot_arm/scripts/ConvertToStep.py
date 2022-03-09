@@ -68,6 +68,7 @@ def cmd_cb(cmd_arm):
     total_step.position3 += arm_steps.position3
     total_step.position4 += arm_steps.position4
     total_step.position5 += arm_steps.position5
+    total_step.position6 += arm_steps.position6
     
     rospy.loginfo('  total_step.position1 = ' + str(total_step.position1))
 
