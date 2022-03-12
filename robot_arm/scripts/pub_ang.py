@@ -43,7 +43,7 @@ if __name__ == '__main__':
             #print('joint_state.position[0] :: '+str(joint_state.position[0]))
             printscreen()
         
-        #Joint2
+        #Joint2 
         elif(char == 'w'):
             joint_state.position[1] = joint_state.position[1] + step
             # print('joint_state.position[1] :: '+str(joint_state.position[1]))
